@@ -6,8 +6,15 @@
 //
 
 #import "SceneDelegate.h"
+#import "BGTasks.h"
+#import <GLFW/glfw.h>
+
 
 @interface SceneDelegate ()
+
+@property(atomic) UIBackgroundTaskIdentifier backgroundTaskId;
+@property(atomic) long number;
+@property(atomic, strong) NSTimer* timer;
 
 @end
 
@@ -51,6 +58,36 @@
     // Called as the scene transitions from the foreground to the background.
     // Use this method to save data, release shared resources, and store enough scene-specific state information
     // to restore the scene back to its current state.
+    
+    _backgroundTaskId  = [ [UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+        [self endBack];
+    }];
+
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+
+    self.number = 0;
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.f repeats:YES block:^(NSTimer * _Nonnull timer) {
+        self.number++;
+        [UIApplication sharedApplication].applicationIconBadgeNumber = self.number;
+        if (self.number == 170) {
+            [self.timer invalidate];
+        }
+
+        NSLog(@"%@==%ld ",[NSDate date],self.number);
+        NSLog(@"%@==%ld ",[NSDate date], [UIApplication sharedApplication].backgroundTimeRemaining);
+    }];
+    
+    [[BGTasks shared] enterBackground];
+    
+}
+
+
+
+
+-(void)endBack {
+    NSLog(@"%@== endBack",[NSDate date]);
+    [[UIApplication sharedApplication] endBackgroundTask:_backgroundTaskId];
+    _backgroundTaskId = UIBackgroundTaskInvalid;
 }
 
 

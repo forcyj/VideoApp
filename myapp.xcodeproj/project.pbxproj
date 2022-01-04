@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		214B68162784B1C9004CCEBD /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 214B68152784B1C9004CCEBD /* OpenGLES.framework */; };
+		214B68182784B1D7004CCEBD /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 214B68172784B1D7004CCEBD /* CoreVideo.framework */; };
+		217D4D42273999B00032F899 /* BGTasks.m in Sources */ = {isa = PBXBuildFile; fileRef = 217D4D41273999B00032F899 /* BGTasks.m */; };
+		217D4D45273D79C20032F899 /* RefCountTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 217D4D44273D79C20032F899 /* RefCountTest.m */; };
 		21E4D8CB272999D80089128F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E4D8CA272999D80089128F /* AppDelegate.m */; };
 		21E4D8CE272999D80089128F /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E4D8CD272999D80089128F /* SceneDelegate.m */; };
 		21E4D8D1272999D80089128F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E4D8D0272999D80089128F /* ViewController.m */; };
@@ -36,6 +40,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		214B68152784B1C9004CCEBD /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		214B68172784B1D7004CCEBD /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		217D4D40273999B00032F899 /* BGTasks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BGTasks.h; sourceTree = "<group>"; };
+		217D4D41273999B00032F899 /* BGTasks.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BGTasks.m; sourceTree = "<group>"; };
+		217D4D43273D79C20032F899 /* RefCountTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RefCountTest.h; sourceTree = "<group>"; };
+		217D4D44273D79C20032F899 /* RefCountTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RefCountTest.m; sourceTree = "<group>"; };
 		21E4D8C6272999D80089128F /* myapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21E4D8C9272999D80089128F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		21E4D8CA272999D80089128F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -61,6 +71,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				214B68182784B1D7004CCEBD /* CoreVideo.framework in Frameworks */,
+				214B68162784B1C9004CCEBD /* OpenGLES.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +93,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		214B68142784B1C9004CCEBD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				214B68172784B1D7004CCEBD /* CoreVideo.framework */,
+				214B68152784B1C9004CCEBD /* OpenGLES.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		21E4D8BD272999D80089128F = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +109,7 @@
 				21E4D8E4272999D80089128F /* myappTests */,
 				21E4D8EF272999D90089128F /* myappUITests */,
 				21E4D8C7272999D80089128F /* Products */,
+				214B68142784B1C9004CCEBD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -115,6 +137,10 @@
 				21E4D8D7272999D80089128F /* LaunchScreen.storyboard */,
 				21E4D8DA272999D80089128F /* Info.plist */,
 				21E4D8DB272999D80089128F /* main.m */,
+				217D4D40273999B00032F899 /* BGTasks.h */,
+				217D4D41273999B00032F899 /* BGTasks.m */,
+				217D4D43273D79C20032F899 /* RefCountTest.h */,
+				217D4D44273D79C20032F899 /* RefCountTest.m */,
 			);
 			path = myapp;
 			sourceTree = "<group>";
@@ -267,9 +293,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				21E4D8D1272999D80089128F /* ViewController.m in Sources */,
+				217D4D42273999B00032F899 /* BGTasks.m in Sources */,
 				21E4D8CB272999D80089128F /* AppDelegate.m in Sources */,
 				21E4D8DC272999D80089128F /* main.m in Sources */,
 				21E4D8CE272999D80089128F /* SceneDelegate.m in Sources */,
+				217D4D45273D79C20032F899 /* RefCountTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,15 +467,19 @@
 		21E4D8F6272999D90089128F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QHU5Q35B8T;
+				HEADER_SEARCH_PATHS = /usr/local/include;
 				INFOPLIST_FILE = myapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				OTHER_LDFLAGS = "-lGLFW3";
 				PRODUCT_BUNDLE_IDENTIFIER = com.forcyj.myapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -457,15 +489,19 @@
 		21E4D8F7272999D90089128F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QHU5Q35B8T;
+				HEADER_SEARCH_PATHS = /usr/local/include;
 				INFOPLIST_FILE = myapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				OTHER_LDFLAGS = "-lGLFW3";
 				PRODUCT_BUNDLE_IDENTIFIER = com.forcyj.myapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -6,8 +6,14 @@
 //
 
 #import "AppDelegate.h"
+#import "BGTasks.h"
+#import "RefCountTest.h"
 
 @interface AppDelegate ()
+
+@property(atomic) UIBackgroundTaskIdentifier backgroundTaskId;
+@property(atomic) long number;
+@property(atomic, strong) NSTimer* timer;
 
 @end
 
@@ -15,9 +21,47 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    UIUserNotificationSettings* settings  = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge categories:nil];
+    [application registerUserNotificationSettings:settings];
+    
+
+    [[BGTasks shared]initInDidFinished];
+    
+    [RefCountTest testAlloc];
+    
     // Override point for customization after application launch.
     return YES;
 }
+
+-(void)applicationDidEnterBackground:(UIApplication *)application {
+    _backgroundTaskId  = [application beginBackgroundTaskWithExpirationHandler:^{
+        [self endBack];
+    }];
+    
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+        
+    self.number = 0;
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.f repeats:YES block:^(NSTimer * _Nonnull timer) {
+        self.number++;
+        [UIApplication sharedApplication].applicationIconBadgeNumber = self.number;
+        if (self.number == 9) {
+            [self.timer invalidate];
+        }
+        
+        NSLog(@"%@==%ld ",[NSDate date],self.number);
+    }];
+}
+
+-(void)endBack {
+    [[UIApplication sharedApplication] endBackgroundTask:_backgroundTaskId];
+    _backgroundTaskId = UIBackgroundTaskInvalid;
+}
+
+
+
+
+
+
 
 
 #pragma mark - UISceneSession lifecycle
